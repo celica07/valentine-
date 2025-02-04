@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine please?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #ffcccc;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .heart {
+            color: red;
+            font-size: 50px;
+            animation: beat 1s infinite alternate;
+        }
+        @keyframes beat {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.2);
+            }
+        }
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+            width: 150px;
+        }
+        .yes {
+            background-color: #ff4d4d;
+            color: white;
+        }
+        .no {
+            background-color: #cccccc;
+            color: black;
+            position: absolute;
+        }
+        .valentine-img {
+            width: 80%;
+            max-width: 300px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        .share-link {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Will You Be My Valentine, baby? <span class="flower">🌷</span></h1>
+    <img src="IMG_3409 2.jpeg" alt="Valentine" class="valentine-img"> 
+    <div class="buttons">
+        <button class="yes" onclick="alert('yeppieeee babyyy! 💖')">Yes</button>
+        <button class="no" onmouseover="moveNo()">No</button>
+    </div>
+    <div class="share-link">
+        <p>Share this with someone special:</p>
+        <a href="#" onclick="copyLink(event)">Copy Link</a>
+    </div>
+
+    <script>
+        function moveNo() {
+            let button = document.querySelector('.no');
+            let x = Math.random() * (window.innerWidth - button.clientWidth);
+            let y = Math.random() * (window.innerHeight - button.clientHeight);
+            button.style.left = `${x}px`;
+            button.style.top = `${y}px`;
+        }
+
+        function copyLink(event) {
+            event.preventDefault();
+            const link = window.location.href;
+            navigator.clipboard.writeText(link).then(() => {
+                alert('Link copied to clipboard! Share it with someone special ❤️');
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
